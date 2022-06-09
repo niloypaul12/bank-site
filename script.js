@@ -14,15 +14,18 @@ const depositBtn = document.getElementById('addDeposit');
 depositBtn.addEventListener('click',function(){
     const depositNumber = getInputNumber("depositAmount");
 
+    if (depositNumber < 0 ) {
+        alert('Deposit Number Cannot be Negative Value.')
+        
+    }
+    else{
+        updateSpanText("currentDeposit", depositNumber); //this is the call for deposit
 
-    updateSpanText("currentDeposit", depositNumber); //this is the call for deposit
-
-    document.getElementById("depositAmount").value = ""; //making the input in deposit empty string after every click
-    
-    updateSpanText("currentBalance", depositNumber); //this is the call for balance addition
-    // deposit work ends here
-
-    
+        document.getElementById("depositAmount").value = ""; //making the input in deposit empty string after every click
+        
+        updateSpanText("currentBalance", depositNumber); //this is the call for balance addition
+        // deposit work ends here
+    }
 
 })
 
@@ -46,10 +49,6 @@ function getInputNumber(id){
 
 
 }
-
-
-
-
 
 
 function updateSpanText(id, depositNumber){
